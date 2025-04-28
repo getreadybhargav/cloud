@@ -1,0 +1,118 @@
+{% extends "tpahome.html" %}
+{% block content %}
+    <!-- Inline CSS -->
+    <style>
+        .border-example {
+            width: 150px;
+            height: 30px;
+            margin: 10px;
+            padding: 10px;
+        }
+        .dashed {
+            border: 2px dashed #008000;
+        }
+        .double {
+            border: 4px double #1f96ce;
+        }
+    </style>
+</head>
+<body>
+
+        <div class="site-section">
+            <div class="container">
+                <div class="row mb-5">
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        <ul>
+                        {% for category, message in messages %}
+                            <li class="{{ category }}">{{ message }}</li>
+                        {% endfor %}
+                        </ul>
+                    {% endif %}
+                {% endwith %}
+                    <form class="col-md-12" method="post">
+                        <div class="site-blocks-table">
+                            <center>
+                                <h1>View All file BY MCSS</h1>
+                            </center>
+                            <table class="border-example double">
+                                <thead>
+                                    <tr>
+                                        <th class="border-example dashed">Id</th>
+                                        <th class="border-example dashed">Email</th>
+                                        <th class="border-example dashed">Patient Name</th>
+                                        <th class="border-example dashed">Age</th>
+                                        <th class="border-example dashed">Address</th>
+                                        <th class="border-example dashed">Temperature</th>
+                                        <th class="border-example dashed">Respiratory</th>
+                                        <th class="border-example dashed">Pulse Rate</th>
+                                        <th class="border-example dashed">Motion</th>
+                                        <th class="border-example dashed">Hydration</th>
+                                        <th class="border-example dashed">Gas</th>
+                                        <th class="border-example dashed">Glucose</th>
+                                        <th class="border-example dashed">File Name</th>
+                                        <th class="border-example dashed">Keywords</th>
+                                        <th class="border-example dashed">Cypher Text</th>
+                                        <th class="border-example dashed">DateTime</th>
+                                        <th class="border-example dashed">Secure Key</th>
+                                        <th class="border-example dashed">Tag Name</th>
+                                        <th class="border-example dashed">Status</th>
+                                        <!-- <th class="border-example dashed">Action</th> -->
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for index, row in data.iterrows() %}
+                                    <tr>
+                                        <td class="border-example dashed">{{ row['id'] }}</td>
+                                        <td class="border-example dashed">{{ row['doemail'] }}</td>
+                                        <td class="border-example dashed">{{ row['patirntname'] }}</td>
+                                        <td class="border-example dashed">{{ row['age'] }}</td>
+                                        <td class="border-example dashed">{{ row['address'] }}</td>
+                                        <td class="border-example dashed">{{ row['temperature'] }}</td>
+                                        <td class="border-example dashed">{{ row['respiratory'] }}</td>
+                                        <td class="border-example dashed">{{ row['pulserate'] }}</td>
+                                        <td class="border-example dashed">{{ row['motion'] }}</td>
+                                        <td class="border-example dashed">{{ row['hydration'] }}</td>
+                                        <td class="border-example dashed">{{ row['gas'] }}</td>
+                                        <td class="border-example dashed">{{ row['glucose'] }}</td>
+                                        <td class="border-example dashed">{{ row['FileName'] }}</td>
+                                        <td class="border-example dashed">{{ row['Keywords'] }}</td>
+                                        <td class="border-example dashed">{{ row['Files'] }}</td>
+                                        <td class="border-example dashed">{{ row['Requestedtime'] }}</td>
+                                        <td class="border-example dashed">{{ row['Secratekey'] }}</td>
+                                        <td class="border-example dashed">{{ row['Tagname'] }}</td>
+                                        <td class="border-example dashed">{{ row['status'] }}</td>
+                                        
+                                       <!-- <td class="border-example dashed">
+                                            <a href="{{ url_for('accept_request', id=row['id']) }}" class="btn btn-success btn-sm me-2">Accept</a>
+                                            <a href="{{ url_for('reject_request', id=row['id']) }}" class="btn btn-danger btn-sm">Reject</a>
+                                        </td>  -->
+                                        
+                                        
+                                        
+                                        
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </form>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/js/jquery-3.3.1.min.js"></script>
+    <script src="/static/js/jquery-ui.js"></script>
+    <script src="/static/js/popper.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <script src="/static/js/owl.carousel.min.js"></script>
+    <script src="/static/js/jquery.magnific-popup.min.js"></script>
+    <script src="/static/js/aos.js"></script>
+
+    <script src="/static/js/main.js"></script>
+
+</body>
+{% endblock %}

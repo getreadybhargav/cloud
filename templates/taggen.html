@@ -1,0 +1,76 @@
+{% extends "userhome.html" %}
+{% block content %}
+        <center>
+        <div class="site-section">
+            <div class="container">
+                <div class="row mb-5">
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        <ul>
+                        {% for category, message in messages %}
+                            <li class="{{ category }}">{{ message }}</li>
+                        {% endfor %}
+                        </ul>
+                    {% endif %}
+                {% endwith %}
+              
+                <h1>Tag Generator</h1><br><br><br>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Email</th>
+                            <th>Patient Name</th>
+                            <th>Age</th>
+                            <th>File Name</th>
+                            <th>Keywords</th>
+                            <th>Cypher Text</th>
+                            <th>DateTime</th>
+                            <th>Secure Key</th>
+                            <th>Tag Name</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for index, row in data.iterrows() %}
+                        <tr>
+                            <td>{{ row['id'] }}</td>
+                            <td>{{ row['doemail'] }}</td>
+                            <td>{{ row['patirntname'] }}</td>
+                            <td>{{ row['age'] }}</td>
+                            <td>{{ row['FileName'] }}</td>
+                            <td>{{ row['Keywords'] }}</td>
+                            <td>{{ row['Files'] }}</td>
+                            <td>{{ row['DateTime'] }}</td>
+                            <td>{{ row['Secratekey'] }}</td>
+                            <td>{{ row['Tagname'] }}</td>
+                            <td>
+                                <form action="{{ url_for('add_tag', id=row['id']) }}" method="post" enctype="multipart/form-data">
+                                    <label for="tag_name_{{ row['id'] }}">Tag Name:</label>
+                                    <input type="text" id="tag_name_{{ row['id'] }}" name="tag_name" required><br>
+                                    <button type="submit" class="btn btn-primary btn-sm">Add Tag</button>
+                                </form>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                </div>
+            </center>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/js/jquery-3.3.1.min.js"></script>
+    <script src="/static/js/jquery-ui.js"></script>
+    <script src="/static/js/popper.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <script src="/static/js/owl.carousel.min.js"></script>
+    <script src="/static/js/jquery.magnific-popup.min.js"></script>
+    <script src="/static/js/aos.js"></script>
+
+    <script src="/static/js/main.js"></script>
+
+</body>
+{% endblock %}

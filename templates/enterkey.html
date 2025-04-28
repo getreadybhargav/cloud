@@ -1,0 +1,83 @@
+{% extends "userhome.html" %}
+{% block content %}
+
+    <!-- Inline CSS -->
+    <style>
+        .border-example {
+            width: 150px;
+            height: 30px;
+            margin: 10px;
+            padding: 10px;
+        }
+
+        .dashed {
+            border: 2px dashed #008000;
+        }
+
+        .double {
+            border: 4px double #1f96ce;
+        }
+    </style>
+</head>
+
+<body>
+
+            <center>
+            <div class="site-section">
+                <div class="container">
+                    <div class="row mb-5">
+                        {% with messages = get_flashed_messages(with_categories=true) %}
+                        {% if messages %}
+                        <ul>
+                            {% for category, message in messages %}
+                            <li class="{{ category }}">{{ message }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                        {% endwith %}
+                        <div class="p-3 p-lg-5 border" style="
+                        width: 767px;
+                        margin-left: 90px; background-color: burlywood;
+                    ">
+                            <h1 class="mb-4" style="color: rgb(17, 134, 236);">Enter Key</h1>
+
+                            <form action="{{ url_for('key') }}" method="POST" enctype="multipart/form-data">
+                                {% if message == "Login successful" %}
+                                <h2 style="color:pink">Registered successfully</h2>
+                                {% elif message == "Login failed" %}
+                                <h2 style="color:pink">Login failed. Check Email and Password</h2>
+                                {% endif %}
+                                <div class="row gx-4 gy-3">
+                                    <div class="col-xl-12">
+                                        <input type="text" name="pkey" class="form-control bg-white border-0 py-3 px-4"
+                                            placeholder="Enter Secrate Key">
+                                    </div><br><br>
+
+                                    <div class="col-12">
+                                        <button class="btn-hover-bg btn btn-primary w-100 py-3 px-5"
+                                            type="submit">Submit</button>
+                                    </div>
+
+                                </div>
+                            </form>
+
+                        </div>
+        </center>
+
+    </div>
+    </div>
+    </div>
+
+    <script src="/static/js/jquery-3.3.1.min.js"></script>
+    <script src="/static/js/jquery-ui.js"></script>
+    <script src="/static/js/popper.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <script src="/static/js/owl.carousel.min.js"></script>
+    <script src="/static/js/jquery.magnific-popup.min.js"></script>
+    <script src="/static/js/aos.js"></script>
+
+    <script src="/static/js/main.js"></script>
+
+</body>
+
+{% endblock %}

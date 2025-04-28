@@ -1,0 +1,181 @@
+{% extends "userhome.html" %}
+{% block content %}
+            <div class="site-section">
+                <div class="container">
+                    <div class="col-md-6 mb-5 mb-md-0">
+                        <center>
+                            <h2 class="h3 mb-3 text-black" style="width: 695px; margin-left: 180px;">Upload Files</h2>
+                        </center>
+                        <div class="p-3 p-lg-5 border" style="width: 767px; margin-left: 90px; background-color: burlywood;">
+                            <form id="uploadForm" method="POST" action="/UploadFiles" enctype="multipart/form-data">
+                                <div class="form-group row">
+                                    <div class="col-md-6">
+                                        <label for="patientname" class="text-black">Enter patient name<span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="patientname" name="patientname" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="age" class="text-black">Age <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="age" name="age">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <div class="col-md-6">
+                                        <label for="address" class="text-black">Address </label>
+                                        <input type="text" class="form-control" id="address" name="address">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="contact" class="text-black">Contact Number <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="contact" name="contact">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-md-6">
+                                        <label for="temperature" class="text-black">Enter temperature <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="temperature" name="temperature">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="respiratory" class="text-black">Select Respiratory Problem <span class="text-danger">*</span></label>
+                                        <select class="form-control" id="respiratory" name="respiratory">
+                                            <option value="">Select an option</option>
+                                            <option value="asthma">Asthma</option>
+                                            <option value="bronchitis">Bronchitis</option>
+                                            <option value="pneumonia">Pneumonia</option>
+                                            <option value="copd">Chronic Obstructive Pulmonary Disease (COPD)</option>
+                                            <option value="emphysema">Emphysema</option>
+                                            <option value="lung_cancer">Lung Cancer</option>
+                                            <option value="tuberculosis">Tuberculosis</option>
+                                            <option value="other">Other</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <div class="col-md-6">
+                                        <label for="pulserate" class="text-black">Select Pulse Rate <span class="text-danger">*</span></label>
+                                        <select class="form-control" id="pulserate" name="pulserate">
+                                            <option value="">Select an option</option>
+                                            <option value="below_60">Below 60 BPM (Bradycardia)</option>
+                                            <option value="60_100">60-100 BPM (Normal)</option>
+                                            <option value="above_100">Above 100 BPM (Tachycardia)</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="motion" class="text-black">Select Motion problem <span class="text-danger">*</span></label>
+                                        <select class="form-control" id="motion" name="motion">
+                                            <option value="">Select an option</option>
+                                            <option value="Yes">Yes</option>
+                                            <option value="No">No</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <div class="col-md-6">
+                                        <label for="hydration" class="text-black">Select Hydration <span class="text-danger">*</span></label>
+                                        <select class="form-control" id="hydration" name="hydration">
+                                            <option value="">Select an option</option>
+                                            <option value="below_60">Below 60 BPM (Bradycardia)</option>
+                                            <option value="60_100">60-100 BPM (Normal)</option>
+                                            <option value="above_100">Above 100 BPM (Tachycardia)</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="motion" class="text-black">Select Breathing problem <span class="text-danger">*</span></label>
+                                        <select class="form-control" id="motion" name="motion">
+                                            <option value="">Select an option</option>
+                                            <option value="Yes">Yes</option>
+                                            <option value="No">No</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <div class="col-md-6">
+                                        <label for="gas" class="text-black">Gas Problem<span class="text-danger">*</span></label>
+                                        <select class="form-control" id="gas" name="gas">
+                                            <option value="">Select an option</option>
+                                            <option value="Yes">Yes</option>
+                                            <option value="No">No</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="glucose" class="text-black">Select Glucose Level <span class="text-danger">*</span></label>
+                                        <select class="form-control" id="glucose" name="glucose">
+                                            <option value="">Select an option</option>
+                                            <option value="normal_fasting">Normal (Fasting): 70-99 mg/dL</option>
+                                            <option value="prediabetes_fasting">Prediabetes (Fasting): 100-125 mg/dL</option>
+                                            <option value="diabetes_fasting">Diabetes (Fasting): 126 mg/dL and above</option>
+                                            <option value="normal_postprandial">Normal (Postprandial): Less than 140 mg/dL</option>
+                                            <option value="prediabetes_postprandial">Prediabetes (Postprandial): 140-199 mg/dL</option>
+                                            <option value="diabetes_postprandial">Diabetes (Postprandial): 200 mg/dL and above</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-md-6">
+                                        <label for="FileName" class="text-black">Enter File name<span
+                                                class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="FileName" name="FileName" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="Keywords" class="text-black">Ente Keywords <span
+                                                class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="Keywords" name="Keywords">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <div class="col-md-6">
+                                        <label for="Files" class="text-black">Upload File <span class="text-danger">*</span></label>
+                                        <input type="file" class="form-control" id="Files" name="Files">
+                                    </div>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary btn-lg btn-block">Upload</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+
+    <script src="/static/js/jquery-3.3.1.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <script src="/static/js/jquery.magnific-popup.min.js"></script>
+    <script src="/static/js/jquery-ui.js"></script>
+    <script src="/static/js/owl.carousel.min.js"></script>
+    <script src="/static/js/aos.js"></script>
+    <script src="/static/js/main.js"></script>
+
+    <!-- JavaScript to handle form submission and show alerts -->
+    <script>
+        document.querySelector('form').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent the default form submission
+
+    var formData = new FormData(this);
+
+    fetch('/UploadFiles', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            alert('Updated successfully!');
+            window.location = 'thankyou.html'; // Redirect to the thank you page
+        } else {
+            alert('User already exists or another error occurred.');
+        }
+    })
+    .catch(error => {
+        alert('An error occurred while uploading the file.');
+        console.error('Error:', error);
+    });
+});
+
+    </script>
+</body>
+

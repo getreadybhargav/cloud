@@ -1,0 +1,93 @@
+{% extends "userhome.html" %}
+{% block content %}
+
+    <!-- Inline CSS -->
+    <style>
+        .border-example {
+            width: 150px;
+            height: 30px;
+            margin: 10px;
+            padding: 10px;
+        }
+
+        .dashed {
+            border: 2px dashed #008000;
+        }
+
+        .double {
+            border: 4px double #1f96ce;
+        }
+    </style>
+</head>
+
+<body>
+
+  
+        
+        <section id="contact" class="contact">
+            <div class="container">
+                <div class="col-lg-6" style="
+              width: 547px;
+          ">
+                    <th>File Data</th>
+                    <table border="" style="color:white">
+                        <tr>
+        
+                        </tr>
+                        {% for r in row_val %}
+                        <tr>
+                            {% for v in r %}
+                            <td style="color:black"> {{ v }}</td>
+        
+                            <input type="hidden" id="source" value="{{ v }}">
+                            <br><br>
+        
+        
+                            {% endfor %}
+                        </tr>
+                        {% endfor %}
+                    </table>
+                    <br><button type="button" id="save" title="Save as text file">Download</button>
+        
+        
+        
+                </div>
+        
+            </div>
+        
+            </div>
+        </section><!-- End Contact Section -->
+        <script type="text/javascript">
+            // when document is ready
+            document.getElementById("save").onclick = function () {
+                // when clicked the button
+                var content = document.getElementById('source').value;
+                // a [save as] dialog will be shown
+                window.open("data:application/txt," + encodeURIComponent(content), "_self");
+            }
+        </script>
+        </div>
+        <div class="col-lg-8 align-self-baseline">
+        </div>
+        </div>
+        </header>
+        <script src="static/js/scripts.js"></script>
+        
+            
+    </div>
+    </div>
+    </div>
+
+    <script src="/static/js/jquery-3.3.1.min.js"></script>
+    <script src="/static/js/jquery-ui.js"></script>
+    <script src="/static/js/popper.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <script src="/static/js/owl.carousel.min.js"></script>
+    <script src="/static/js/jquery.magnific-popup.min.js"></script>
+    <script src="/static/js/aos.js"></script>
+
+    <script src="/static/js/main.js"></script>
+
+</body>
+
+{% endblock %}
